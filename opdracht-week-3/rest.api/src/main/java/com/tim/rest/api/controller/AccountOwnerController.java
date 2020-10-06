@@ -30,14 +30,14 @@ public class AccountOwnerController {
     public ResponseEntity<AccountOwner> getById(@PathVariable Integer id) {
         var account = accountOwnerService.getById(id);
         if(account == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        return  new ResponseEntity<>(account, HttpStatus.OK);
+        return new ResponseEntity<>(account, HttpStatus.OK);
     }
 
     @GetMapping("/{id}/accounts")
     public ResponseEntity<Collection<Account>> getAllAccountsFromAccountOwners(@PathVariable Integer id) {
         if(accountOwnerService.getById(id) == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         var accounts = accountOwnerService.getAccounts(id);
-        return  new ResponseEntity<>(accounts, HttpStatus.OK);
+        return new ResponseEntity<>(accounts, HttpStatus.OK);
     }
 
     @PostMapping
@@ -45,7 +45,7 @@ public class AccountOwnerController {
         if(result.hasErrors()) return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
         var createdAccount = accountOwnerService.create(accountOWner);
-        return  new ResponseEntity<>(createdAccount, HttpStatus.CREATED);
+        return new ResponseEntity<>(createdAccount, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
@@ -63,7 +63,8 @@ public class AccountOwnerController {
         } catch (RelationNotFoundException e) {
             return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity(HttpStatus.NO_CONTENT);
+
+        return new ResponseEntity<>(accountOWner, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
@@ -78,6 +79,6 @@ public class AccountOwnerController {
         } catch (RelationNotFoundException e) {
             return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
         }
-        return  new ResponseEntity(HttpStatus.NO_CONTENT);
+        return new ResponseEntity(HttpStatus.OK);
     }
 }
