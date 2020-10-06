@@ -41,15 +41,15 @@ public class AccountOwnerController {
     }
 
     @PostMapping
-    public ResponseEntity<AccountOwner> create(@Valid @RequestBody AccountOwner accountOWner, BindingResult result) {
+    public ResponseEntity<AccountOwner> create(@Valid @RequestBody AccountOwner accountOwner, BindingResult result) {
         if(result.hasErrors()) return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
-        var createdAccount = accountOwnerService.create(accountOWner);
+        var createdAccount = accountOwnerService.create(accountOwner);
         return new ResponseEntity<>(createdAccount, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity update(@PathVariable("id") Integer id, @Valid @RequestBody AccountOwner accountOWner, BindingResult result) {
+    public ResponseEntity update(@PathVariable("id") Integer id, @Valid @RequestBody AccountOwner accountOwner, BindingResult result) {
         if(result.hasErrors()) return new ResponseEntity(HttpStatus.BAD_REQUEST);
 
         var savedAccountOwners = accountOwnerService.getById(id);
@@ -59,12 +59,12 @@ public class AccountOwnerController {
         );
 
         try {
-            accountOwnerService.update(id, accountOWner);
+            accountOwnerService.update(id, accountOwner);
         } catch (RelationNotFoundException e) {
             return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
         }
 
-        return new ResponseEntity<>(accountOWner, HttpStatus.OK);
+        return new ResponseEntity<>(accountOwner, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
