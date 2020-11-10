@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Minor</title>
+    <style>
+        body {
+            margin:0; 
+            font-family: cursive;
+        }
+        .header {
+            background: #000; color: white; display:flex; flex-direction: row;
+        }
+        .header__title {
+            margin: 10px; font-size: 25px;
+        }
+        .nav__list {
+            list-style-type: none;
+        }
+        .form {
+            display: flex;
+            flex-direction: column;
+        }
+        .nav__list-item {
+            display: inline-block; margin: 5px; padding: 5px;
+        }
+        .form {
+            padding:5px;
+        }
+        .form .form__element {
+            display: flex;
+            flex-direction: row;
+            margin: 5px 0;
+            max-width: 400px;
+        }
+        .form .form__element .form__label{
+            flex-grow: 1;
+            max-width: 200px;
+        }
+        .form .form__element .form__input{
+            flex-grow: 4;
+            padding: 5px;
+        }
+        .form .form__submit{
+            width: auto;
+            display: block;
+            padding: 5px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header__title">Java Minor</div>
+        <nav>
+            <ul class="nav__list">
+                <li class="nav__list-item"><a href="1.index.html">Home</a></li>
+                <li class="nav__list-item">Form</li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <form class="form">
+                <div class="form__element">
+                    <label class="form__label">Voorletters</label>
+                    <input class="form__input" type="text" required/>
+                </div>
+                <div class="form__element">
+                    <label class="form__label">Achternaam</label>
+                    <input class="form__input" type="text" required/>
+                </div>
+                <div class="form__element">
+                    <label class="form__label">Straat</label>
+                    <input class="form__input" type="text" required/>
+                </div>
+                <div class="form__element">
+                    <label class="form__label">Huisnummer</label>
+                    <input class="form__input" type="number" required/>
+                </div>
+                <div class="form__element">
+                    <label class="form__label">Plaats</label>
+                    <input class="form__input" type="text" required/>
+                </div>
+                <div class="form__element">
+                    <label class="form__label">Postcode</label>
+                    <input class="form__input" type="text" required pattern="[0-9]{4}[a-zA-Z]{2}"/>
+                </div>
+                <div class="form__element">
+                    <label class="form__label">BSN</label>
+                    <input class="form__input" type="text" required/>
+                </div>
+                <div class="form__element">
+                    <label class="form__label">Geboorte datum</label>
+                    <input class="form__input" type="date" required/>
+                </div>
+                <div class="form__element">
+                    <label class="form__label">Telefoon nmmer</label>
+                    <input class="form__input" type="tel" required minlength="10"/>
+                </div>
+                <div class="form__element">
+                    <label class="form__label">Email</label>
+                    <input class="form__input" type="email" required/>
+                </div>
+                <input class="form__submit" type="submit" value="Opslaan"/>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
